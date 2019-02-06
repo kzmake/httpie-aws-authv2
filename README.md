@@ -54,9 +54,9 @@ Formオプション(`-f`) を指定し、 Form data (`Action=DescribeInstances I
 http -v -f -A aws2 POST https://example.com/api/ Action=DescribeInstances
 ```
 
-raw-payload(echo "Action=DescribeInstances InstanceId.1=i-HOGEHOGE") をパイプで渡してリクエスト
+raw-payload(`echo "Action=DescribeInstances&InstanceId.1=i-HOGEHOGE"`) をパイプで渡してリクエスト
 
 ```bash
-echo "Action=DescribeInstances InstanceId.1=i-HOGEHOGE" | http -v -f -A aws2 POST https://example.com/api/
+echo "Action=DescribeInstances&InstanceId.1=i-HOGEHOGE" | http -v -f -A aws2 POST https://example.com/api/
 ```
 
