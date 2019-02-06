@@ -12,7 +12,7 @@ from botocore.awsrequest import AWSRequest
 from botocore.credentials import Credentials
 from httpie.plugins import AuthPlugin
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __author__ = 'kzmake'
 __licence__ = 'MIT'
 
@@ -39,7 +39,10 @@ class AWSv2Auth(SigV2Auth):
 
         if r.method == 'POST':
             if r.body:
-                body = dict(parse_qsl(r.body.decode("utf-8").strip()))
+                if isinstance(r.body, bytes):
+                    body = dict(parse_qsl(r.body.decode("utf-8").strip()))
+                elif isinstance(r.body, str):
+                    body = dict(parse_qsl(r.body.strip()))
                 r.body = urlencode(self.update_params(rr, body))
                 new_headers = r.headers
                 new_headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8'
