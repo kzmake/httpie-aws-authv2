@@ -43,7 +43,7 @@ http -v -A aws2 -a {払い出されたACCESS_KEY_ID}:{払い出されたSECRET_A
 Query (`Action==DescribeInstances InstanceId.1==i-HOGEHOGE`) を指定してリクエスト
 
 ```bash
-http -v -A aws2 GET https://example.com/api/ Action==DescribeInstances
+http -v -A aws2 GET https://example.com/api/ Action==DescribeInstances InstanceId.1==i-HOGEHOGE
 ```
 
 ### POST の例
@@ -51,7 +51,7 @@ http -v -A aws2 GET https://example.com/api/ Action==DescribeInstances
 Formオプション(`-f`) を指定し、 Form data (`Action=DescribeInstances InstanceId.1=i-HOGEHOGE`) を指定してリクエスト
 
 ```bash
-http -v -f -A aws2 POST https://example.com/api/ Action=DescribeInstances
+http -v -f -A aws2 POST https://example.com/api/ Action=DescribeInstances InstanceId.1=i-HOGEHOGE
 ```
 
 raw-payload(`echo "Action=DescribeInstances&InstanceId.1=i-HOGEHOGE"`) をパイプで渡してリクエスト
